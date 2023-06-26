@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <title>BOLF - Accueil</title>
+</head>
+<body>
+    
+<!-- Début navbar -->
+    <nav>
+        <div class="logo">
+          <img src="logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+        </ul>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+      <script>
+ const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+</script>
+<!-- Fin navbar -->
+
+<!-- Début box accueil -->    
+<div class="box">
+    <h2 class="blink-animation">Bienvenue sur BOLF,</h2>
+    <p>le site qui répertorie tout les outils indispensables !</p>
+    <a href="tools.html" class="button">Découvrir les outils</a>
+  </div>
+  <!-- Fin box accueil -->
+
+  <!-- Début footer -->
+  <div class="footer">
+    <div id="button"></div>
+  <div id="container">
+  <div id="cont">
+  <div class="footer_center">
+       <h3 style="color: white;">&copy;
+        Copyright © 2023 BOLF Tous droits réservés.</h3>
+       <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
+  </div>
+  </div>
+  </div>
+  </div>
+<!--- Fin footer -->
+    </body>
+</html>

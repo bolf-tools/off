@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <title>BOLF - Calendrier</title>
+</head>
+<body>
+    
+<!-- Début navbar -->
+    <nav>
+        <div class="logo">
+          <img onclick="window.location.href='index.html';" src="logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+          <a href="tools.html" class="button">Retour</a>
+        </ul>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+      <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var currentDate = new Date();
+      var currentMonth = currentDate.getMonth();
+      var currentYear = currentDate.getFullYear();
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var currentDateElement = document.getElementById('currentDate');
+      var eventInput = document.getElementById('eventInput');
+      var addEventBtn = document.getElementById('addEventBtn');
+      var eventList = document.getElementById('eventList');
+      var events = [];
+
+      renderCalendar(currentMonth, currentYear);
+
+      prevBtn.addEventListener('click', function() {
+        currentYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+        currentMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+        renderCalendar(currentMonth, currentYear);
+      });
+
+      nextBtn.addEventListener('click', function() {
+        currentYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+        currentMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+        renderCalendar(currentMonth, currentYear);
+      });
+
+      addEventBtn.addEventListener('click', function() {
+        var eventText = eventInput.value.trim();
+        if (eventText !== '') {
+          var selectedDay = document.querySelector('.calendar-day.selected');
+          if (selectedDay) {
+            var eventDate = new Date(currentYear, currentMonth, parseInt(selectedDay.textContent));
+            var eventItem = {
+              date: eventDate,
+              text: eventText
+            };
+            events.push(eventItem);
+
+            var eventMarker = document.createElement('span');
+            eventMarker.className = 'event-marker';
+            eventMarker.textContent = '*';
+            selectedDay.appendChild(eventMarker);
+
+            var listItem = document.createElement('li');
+            listItem.textContent = eventDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + ': ' + eventText;
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Supprimer';
+            deleteButton.addEventListener('click', function() {
+              listItem.parentNode.removeChild(listItem);
+              events = events.filter(function(event) {
+                return event !== eventItem;
+              });
+            });
+
+            listItem.appendChild(deleteButton);
+            eventList.appendChild(listItem);
+          }
+          eventInput.value = '';
+        }
+      });
+
+      function renderCalendar(month, year) {
+        var firstDay = new Date(year, month, 1);
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+        var startDate = firstDay.getDay();
+
+        currentDateElement.textContent = firstDay.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+        var calendar = document.querySelector('.calendar');
+        calendar.innerHTML = '';
+
+        var dayLabels = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+
+        for (var i = 0; i < dayLabels.length; i++) {
+          var dayLabel = document.createElement('div');
+          dayLabel.textContent = dayLabels[i];
+          calendar.appendChild(dayLabel);
+        }
+
+        for (var j = 0; j < startDate; j++) {
+          var emptyDay = document.createElement('div');
+          calendar.appendChild(emptyDay);
+        }
+
+        for (var k = 1; k <= daysInMonth; k++) {
+          var calendarDay = document.createElement('div');
+          calendarDay.textContent = k;
+          calendarDay.className = 'calendar-day';
+          calendarDay.addEventListener('click', function() {
+            var selectedDay = document.querySelector('.calendar-day.selected');
+            if (selectedDay) {
+              selectedDay.classList.remove('selected');
+            }
+            this.classList.add('selected');
+          });
+
+          var eventItem = events.find(function(event) {
+            return event.date.getDate() === k && event.date.getMonth() === month && event.date.getFullYear() === year;
+          });
+
+          if (eventItem) {
+            var eventMarker = document.createElement('span');
+            eventMarker.className = 'event-marker';
+            eventMarker.textContent = '*';
+            calendarDay.appendChild(eventMarker);
+          }
+
+          calendar.appendChild(calendarDay);
+        }
+      }
+    });
+
+
+      </script>
+  <body>
+
+    <center><b><h1 class="blink-animation">Calendrier</h1></b></center>
+
+    <div class="calendar">
+        <div class="calendar-header">
+          <button id="prevBtn">&lt;</button>
+          <span id="currentDate"></span>
+          <button id="nextBtn">&gt;</button>
+        </div>
+      </div>
+      
+      <div class="event-input">
+        <input type="text" id="eventInput" placeholder="Ajouter un événement">
+        <button id="addEventBtn">Ajouter</button>
+      </div>
+      
+      <ul class="event-list" id="eventList"></ul>
+
+        <!-- Début footer -->
+  <div class="footer">
+    <div id="button"></div>
+  <div id="container">
+  <div id="cont">
+  <div class="footer_center">
+       <h3 style="color: white;">&copy;
+        Copyright © 2023 BOLF Tous droits réservés.</h3>
+       <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
+  </div>
+  </div>
+  </div>
+  </div>
+<!--- Fin footer -->
+</body>
+</html>

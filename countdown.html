@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <title>BOLF - Compte à rebours</title>
+</head>
+<body>
+    
+<!-- Début navbar -->
+    <nav>
+        <div class="logo">
+          <img onclick="window.location.href='index.html';" src="logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <a href="tools.html" class="button">Retour</a>
+        </ul>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+      <script>
+
+var countdownIntervalId; // Variable pour stocker l'ID de l'intervalle du compte à rebours en cours
+        
+        // Fonction pour démarrer le compte à rebours avec le temps choisi par l'utilisateur
+        function startCountdown() {
+            // Supprimer l'intervalle du compte à rebours précédent, le cas échéant
+            if (countdownIntervalId) {
+                clearInterval(countdownIntervalId);
+            }
+            
+            // Obtenir la date et l'heure choisies par l'utilisateur
+            var selectedDate = document.getElementById("date").value;
+            var selectedTime = document.getElementById("time").value;
+            
+            // Concaténer la date et l'heure sélectionnées
+            var targetDateTime = selectedDate + "T" + selectedTime;
+            
+            // Vérifier si une date et une heure valides ont été saisies
+            if (!selectedDate || !selectedTime) {
+                alert("Veuillez sélectionner une date et une heure valides !");
+                return;
+            }
+            
+            // Date cible à partir de la date et de l'heure sélectionnées
+            var targetDate = new Date(targetDateTime);
+            
+            // Vérifier si la date cible est valide
+            if (isNaN(targetDate)) {
+                alert("La date et l'heure sélectionnées sont invalides !");
+                return;
+            }
+            
+            // Mettre à jour le compte à rebours toutes les secondes
+            countdownIntervalId = setInterval(function() {
+                // Date actuelle
+                var currentDate = new Date().getTime();
+                
+                // Calculer la différence entre la date cible et la date actuelle
+                var difference = targetDate - currentDate;
+                
+                // Calculer les jours, heures, minutes et secondes restantes
+                var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                // Afficher le compte à rebours dans un élément avec l'ID "countdown"
+                document.getElementById("countdown").innerHTML = days + " jours, " + hours + " heures, "
+                + minutes + " minutes, " + seconds + " secondes";
+                
+                // Arrêter le compte à rebours lorsque la date cible est atteinte
+                if (difference < 0) {
+                    clearInterval(countdownIntervalId);
+                    document.getElementById("countdown").innerHTML = "Temps écoulé !";
+                }
+            }, 1000); // Rafraîchir toutes les secondes
+        }
+      </script>
+<body>
+    <center><b><h1 class="blink-animation">Compte à rebours</h1></b>
+   
+        <label for="date" style="font-size: 25px;">Date :</label>
+        <input type="date" id="date">
+        
+        <label for="time" style="font-size: 25px;">Heure :</label>
+        <input type="time" id="time">
+        
+        <button onclick="startCountdown()" class="button">Démarrer</button>
+        
+        <div id="countdown" style="font-size: 25px;"></div>
+</center>
+
+  <!-- Début footer -->
+  <div class="footer">
+    <div id="button"></div>
+  <div id="container">
+  <div id="cont">
+  <div class="footer_center">
+       <h3 style="color: white;">&copy;
+        Copyright © 2023 BOLF Tous droits réservés.</h3>
+       <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
+  </div>
+  </div>
+  </div>
+  </div>
+<!--- Fin footer -->
+</body>
+</html>

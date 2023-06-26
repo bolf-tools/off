@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <title>BOLF - Horloge</title>
+</head>
+<body>
+    
+<!-- Début navbar -->
+    <nav>
+        <div class="logo">
+          <img onclick="window.location.href='index.html';" src="logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+          <a href="tools.html" class="button">Retour</a>
+        </ul>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+      <script>
+   // Affiche l'heure actuelle
+   function displayTime() {
+      var now = new Date();
+      var hours = now.getHours().toString().padStart(2, '0');
+      var minutes = now.getMinutes().toString().padStart(2, '0');
+      var seconds = now.getSeconds().toString().padStart(2, '0');
+      var clock = document.getElementById("clock");
+      clock.innerHTML = hours + ":" + minutes + ":" + seconds;
+    }
+
+    // Met à jour l'heure toutes les secondes
+    setInterval(displayTime, 1000);
+      </script>
+  <body>
+    <center><b><h1 class="blink-animation">Horloge</h1></b></center>
+
+<div class="clock-container">
+    <div class="clock" id="clock"></div>
+  </div>
+
+
+    <!-- Début footer -->
+    <div class="footer">
+      <div id="button"></div>
+    <div id="container">
+    <div id="cont">
+    <div class="footer_center">
+         <h3 style="color: white;">&copy;
+          Copyright © 2023 BOLF Tous droits réservés.</h3>
+         <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
+    </div>
+    </div>
+    </div>
+    </div>
+  <!--- Fin footer -->
+</body>
+</html>
