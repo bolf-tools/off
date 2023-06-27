@@ -18,6 +18,7 @@ body {
   
   .logo img {
     height: 120px;
+    animation: flip 1s infinite;
   }
   
   .nav-links {
@@ -120,6 +121,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     text-align: center;
+    animation: slideIn 1.5s ease-in-out;
   }
   
   .box h2 {
@@ -571,6 +573,7 @@ body {
           top:0;
           left:0;
           background: #333;
+          animation: fade-in 1s ease;
         }
         .footer #cont{
           position:relative;
@@ -579,17 +582,20 @@ body {
           width:150px;
           height:auto;
           margin:0 auto;
+          animation: fade-in 1s ease;
         }
         .footer_center{
           width:500px;
           float:left;
           text-align:center;
+          animation: fade-in 1s ease;
         }
         .footer h3{
           font-size: 15px;
           font-weight: 100;
           margin-top:70px;
           margin-left:40px;
+          animation: fade-in 1s ease;
         }
         /* Fin footer */
 
@@ -598,4 +604,82 @@ body {
           padding: 20px;
           border-radius: 8px;
           text-align: center;
+          animation: fade-in 1s ease;
+        }
+
+        /* Début réveil */
+        .container_reveil {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin-top: 30px;
+          animation: fade-in 1s ease;
+      }
+
+      .form-group {
+          margin-bottom: 15px;
+          animation: fade-in 1s ease;
+      }
+
+      .form-group label {
+          font-size: 18px;
+          animation: fade-in 1s ease;
+      }
+
+      .form-group input[type="text"] {
+          padding: 8px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          animation: fade-in 1s ease;
+      }
+        /* Fin réveil */
+
+        /* Début nombre aléatoire */
+        .input-container {
+          margin-bottom: 10px;
+        }
+    
+        label {
+          display: block;
+          margin-bottom: 5px;
+        }
+    
+        input[type="number"] {
+          width: 100px;
+          padding: 5px;
+        }
+    
+        #resultat {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+        /* Fin nombre aléatoire */
+
+        @keyframes flip {
+          0% { transform: rotateY(0deg); }
+          50% { transform: rotateY(180deg); }
+          100% { transform: rotateY(0deg); }
+        }
+
+
+        .slide-in {
+          position: relative;
+          left: -100%;
+          animation: slideIn 1s forwards;
+        }
+    
+        @keyframes slideIn {
+          0% {
+            left: -100%;
+          }
+
+          100% {
+            left: 50%;
+          }
+        }
+
+        .buttons-tools {
+          animation: fade-in 1s ease;
         }

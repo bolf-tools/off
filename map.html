@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="icon" href="ico.ico" type="image/x-icon">
-    <title>BOLF - Notes</title>
+    <title>BOLF - Carte du Monde</title>
 </head>
 <body>
     
@@ -28,57 +28,26 @@
       </nav>
 
       <script>
- const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
 
 
-
-        function calculate(value) {
-            document.getElementById('result').value += value;
-        }
-
-        function calculateResult() {
-            var result = document.getElementById('result').value;
-            var calculatedResult = eval(result);
-            document.getElementById('result').value = calculatedResult;
-        }
-
-        function clearResult() {
-            document.getElementById('result').value = '';
-        }
-    
-</script>
-<!-- Fin navbar -->
-
-<!-- Début notes -->
-
-
-<div class="container">
-    <h1 class="blink-animation">Bloc-notes</h1>
-    <textarea id="note-content"></textarea>
-    <button onclick="saveNote()" class="save-button">Enregistrer</button>
-</div>
-
-<script>
-    function saveNote() {
-        var noteContent = document.getElementById("note-content").value;
-        localStorage.setItem("note", noteContent);
-        alert("Note enregistrée !");
-    }
-
-    window.onload = function() {
-        var savedNote = localStorage.getItem("note");
-        if (savedNote) {
-            document.getElementById("note-content").value = savedNote;
-        }
-    };
-</script>
-<!-- Fin notes -->
-
+      </script>
+<body>
+    <center><b><h1 class="blink-animation">Carte du Monde</h1></b>
+   
+        <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+            <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div><script>(function () {
+            var setting = {"query":"Paris, France","width":800,"height":600,"satellite":false,"zoom":12,"placeId":"ChIJD7fiBh9u5kcRYJSMaMOCCwQ","cid":"0x40b82c3688c9460","coords":[48.856614,2.3522219],"lang":"fr","queryString":"Paris, France","centerCoord":[48.856614,2.3522219],"id":"map-9cd199b9cc5410cd3b1ad21cab2e54d3","embed_id":"950447"};
+            var d = document;
+            var s = d.createElement('script');
+            s.src = 'https://1map.com/js/script-for-user.js?embed_id=950447';
+            s.async = true;
+            s.onload = function (e) {
+              window.OneMap.initMap(setting)
+            };
+            var to = d.getElementsByTagName('script')[0];
+            to.parentNode.insertBefore(s, to);
+          })();</script><a href="https://1map.com/fr/map-embed"></a></div>
+</center>
 
   <!-- Début footer -->
   <div class="footer">

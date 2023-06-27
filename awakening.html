@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <title>BOLF - Réveil</title>
+</head>
+<body>
+    
+<!-- Début navbar -->
+    <nav>
+        <div class="logo">
+          <img onclick="window.location.href='index.html';" src="logo.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <a href="tools.html" class="button">Retour</a>
+        </ul>
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+
+      <script>
+
+function setAlarm() {
+            var alarmTime = document.getElementById("alarmTime").value;
+
+            // Vérification si l'heure est valide
+            var validTime = /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/.test(alarmTime);
+            if (!validTime) {
+                alert("Heure invalide. Veuillez entrer l'heure au format HH:MM (24 heures).");
+                return;
+            }
+
+            // Récupération de l'heure actuelle
+            var currentTime = new Date();
+            var currentHour = currentTime.getHours();
+            var currentMinute = currentTime.getMinutes();
+
+            // Séparation de l'heure et des minutes
+            var splitTime = alarmTime.split(":");
+            var alarmHour = parseInt(splitTime[0]);
+            var alarmMinute = parseInt(splitTime[1]);
+
+            // Calcul du temps restant jusqu'à l'alarme en millisecondes
+            var remainingTime = new Date();
+            remainingTime.setHours(alarmHour);
+            remainingTime.setMinutes(alarmMinute);
+            remainingTime.setSeconds(0);
+            var timeDiff = remainingTime - currentTime;
+
+            // Vérification si l'heure de l'alarme est passée
+            if (timeDiff < 0) {
+                alert("L'heure de l'alarme est déjà passée. Veuillez entrer une heure future.");
+                return;
+            }
+
+            // Démarrage du compte à rebours
+            setTimeout(function() {
+                alert("C'est l'heure !");
+            }, timeDiff);
+        }
+      </script>
+<body>
+    <center><b><h1 class="blink-animation">Réveil</h1></b>
+   
+        <div class="container_reveil">
+            <div class="form-group">
+                <label for="alarmTime">Heure de l'alarme (HH:MM) :</label>
+                <input type="text" id="alarmTime" placeholder="Entrez l'heure de l'alarme">
+            </div>
+    
+            <a class="button" onclick="setAlarm()" style="cursor: pointer;">Définir l'alarme</a>
+</center>
+
+  <!-- Début footer -->
+  <div class="footer">
+    <div id="button"></div>
+  <div id="container">
+  <div id="cont">
+  <div class="footer_center">
+       <h3 style="color: white;">&copy;
+        Copyright © 2023 BOLF Tous droits réservés.  <b>Version beta 0.1</b></h3>
+       <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
+      </div>
+  </div>
+  </div>
+  </div>
+<!--- Fin footer -->
+</body>
+</html>

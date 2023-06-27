@@ -89,13 +89,13 @@ var countdownIntervalId; // Variable pour stocker l'ID de l'intervalle du compte
 <body>
     <center><b><h1 class="blink-animation">Compte à rebours</h1></b>
    
-        <label for="date" style="font-size: 25px;">Date :</label>
-        <input type="date" id="date">
+        <label for="date" style="font-size: 25px; animation: fade-in 1s ease;">Date :</label>
+        <input type="date" id="date" style="animation: fade-in 1s ease;">
         
-        <label for="time" style="font-size: 25px;">Heure :</label>
-        <input type="time" id="time">
-        
-        <button onclick="startCountdown()" class="button">Démarrer</button>
+        <label for="time" style="font-size: 25px; animation: fade-in 1s ease;">Heure :</label>
+        <input type="time" id="time" style="animation: fade-in 1s ease;">
+        <br>
+        <button onclick="startCountdown()" class="button" style="animation: fade-in 1s ease;">Démarrer</button>
         
         <div id="countdown" style="font-size: 25px;"></div>
 </center>
@@ -107,9 +107,9 @@ var countdownIntervalId; // Variable pour stocker l'ID de l'intervalle du compte
   <div id="cont">
   <div class="footer_center">
        <h3 style="color: white;">&copy;
-        Copyright © 2023 BOLF Tous droits réservés.</h3>
+        Copyright © 2023 BOLF Tous droits réservés.  <b>Version beta 0.1</b></h3>
        <a style="color: white;" style="cursor: pointer;" href="terms.html">Conditions d'utilisation</a>
-  </div>
+      </div>
   </div>
   </div>
   </div>

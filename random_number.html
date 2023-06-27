@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <link rel="icon" href="ico.ico" type="image/x-icon">
-    <title>BOLF - Chronomètre</title>
+    <title>BOLF - Nombre aléatoire</title>
 </head>
 <body>
     
@@ -28,43 +28,46 @@
       </nav>
 
       <script>
-    var startTime;
-    var running = false;
+    function genererNombreAleatoire() {
+      var min = parseInt(document.getElementById("min").value);
+      var max = parseInt(document.getElementById("max").value);
 
-    function startTimer() {
-      startTime = new Date();
-      running = true;
-      updateTimer();
-    }
-
-    function stopTimer() {
-      running = false;
-    }
-
-    function updateTimer() {
-      if (running) {
-        var currentTime = new Date();
-        var timeElapsed = currentTime - startTime;
-
-        var minutes = Math.floor((timeElapsed / (1000 * 60)) % 60);
-        var seconds = Math.floor((timeElapsed / 1000) % 60);
-        var milliseconds = Math.floor((timeElapsed % 1000) / 10);
-
-        document.getElementById("timer").innerHTML = minutes + ":" + seconds + ":" + milliseconds;
-
-        setTimeout(updateTimer, 10);
+      // Vérification des valeurs saisies
+      if (isNaN(min) || isNaN(max)) {
+        alert("Veuillez entrer des nombres valides.");
+        return;
       }
+
+      // Vérification de l'intervalle
+      if (min >= max) {
+        alert("La valeur minimale doit être inférieure à la valeur maximale.");
+        return;
+      }
+
+      // Génération du nombre aléatoire
+      var nombreAleatoire = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      // Affichage du résultat
+      document.getElementById("resultat").innerHTML = "Le nombre aléatoire est : " + nombreAleatoire;
     }
       </script>
   <body>
-    <center><b><h1 class="blink-animation">Chronomètre</h1></b>
+    <center><b><h1 class="blink-animation">Nombre aléatoire</h1></b>
 
-        <div id="timer" style="font-size: 50px; animation: fade-in 1s ease;">0:0:0</div>
-    <button onclick="startTimer()" class="button" style="animation: fade-in 1s ease;">Démarrer</button>
-    <button onclick="stopTimer()" class="button" style="animation: fade-in 1s ease;">Arrêter</button>
-  </div>
-</center>
-
+    <div class="input-container" style="animation: fade-in 1s ease;">
+        <label for="min">Valeur minimale :</label>
+        <input type="number" id="min">
+      </div>
+      
+      <div class="input-container" style="animation: fade-in 1s ease;">
+        <label for="max">Valeur maximale :</label>
+        <input type="number" id="max">
+      </div>
+      
+      <a onclick="genererNombreAleatoire()" class="button" style="animation: fade-in 1s ease;">Générer un nombre aléatoire</a>
+      
+      <p id="resultat"></p>
+    </center>
   <!-- Début footer -->
   <div class="footer">
     <div id="button"></div>
